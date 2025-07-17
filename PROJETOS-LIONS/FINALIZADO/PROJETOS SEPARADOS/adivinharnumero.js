@@ -2,7 +2,7 @@ const readline = require("readline");
 
 
 // VARIAVEIS EDITAVEIS
-let rodadas = 2;
+let rodadas = 1;
 let maxtry = 7;
 const valormaximodonumero = 10 + 1
 //-----------------------
