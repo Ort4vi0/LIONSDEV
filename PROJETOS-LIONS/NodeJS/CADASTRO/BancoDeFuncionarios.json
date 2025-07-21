@@ -1,0 +1,16 @@
+[
+  {
+    "FuncionarioNumero": 8480,
+    "nome": "bida",
+    "cargo": "vendedor",
+    "Admin": true,
+    "salario": 6000
+  },
+  {
+    "FuncionarioNumero": 630,
+    "nome": "paraizo",
+    "cargo": "gerente",
+    "Admin": true,
+    "salario": 9000
+  }
+]
