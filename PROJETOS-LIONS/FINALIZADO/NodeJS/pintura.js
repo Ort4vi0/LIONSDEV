@@ -6,4 +6,4 @@ const pintura = {
 }
 for (let i=0; i<7; i++){
     console.log(`Minha pintura é ${pintura.nomedapintura} feita por ${pintura.artista} em ${pintura.data} e significa ${pintura.significado}`)
-}
+}console
