@@ -1,8 +1,8 @@
 import fs from 'fs';
 export let baralhos = [];
 export let flashcardsdb = [];
-export const DBMASTER = "baralhos.json";
-export const DBMASTER2 = "flashcards.json";
+export const DBMASTER = "./db/baralhos.json";
+export const DBMASTER2 = "./db/flashcards.json";
 
 export function AddArrayBarralho(novoBaralho) {
     baralhos = novoBaralho;
