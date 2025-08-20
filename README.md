@@ -4,4 +4,4 @@
 > Pasta Principal contendo alguns dos projetos [PROJETOS-LIONS/Projetos-NODEJS](https://github.com/Ort4vi0/LIONSDEV/tree/main/PROJETOS-LIONS/Projetos-NODEJS)
 
 
-### Professor [Felipe](https://github.com/FilipePaixao) 🎓
+### Professor [Filipe](https://github.com/FilipePaixao) 🎓
