@@ -5,6 +5,7 @@ function AdicionarPaciente(req,res){
     if(!nome || !data){
         return res.status(400).send("Insira o nome e data de nascimento...")
     }
+    
     const Paciente = { 
         ID: Date.now(),
         nome,

@@ -49,6 +49,20 @@ function LerPacientes(){
     return LerDados(DBpacientes)
 }
 
+function VerificarMedicoePaciente(Medico, Paciente, res){
+    const Medicos = LerMedicos()
+    const Pacientes = LerPacientes()
+    const VerificarMedico = Medicos.filter(medico => medico.CRM === Medico)
+    const VerificarPaciente = Pacientes.filter(paciente => paciente.ID === Paciente)
+
+    if(VerificarMedico == ''){
+        return res.status(400).send("Não foi possível marcar a consulta CRM inválido")
+    }
+    if(VerificarPaciente == ''){
+        return res.status(400).send("Não foi possível marcar a consuta paciente com ID inválido")
+    }
+}
+
 module.exports = {
     SalvarDados,
     LerDados,
@@ -57,5 +71,6 @@ module.exports = {
     SalvarConsultas,
     LerConsultas,
     LerMedicos,
-    LerPacientes
+    LerPacientes,
+    VerificarMedicoePaciente
 };

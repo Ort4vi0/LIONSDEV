@@ -8,11 +8,14 @@ function EditarMedico(req,res){
         nome,
         especialidade,
     } = req.body
+    if(MedicoIndice === -1){
+        return res.status(400).send("MEDICO NAO ENCONTRADO")
+    }
     if(!nome || !especialidade){
         return res.status(400).send("IDIOTA!!!!!! POE OS TROSSSSOOOOOOO")
     }
     const NovoMedico = {
-        CRM: MedicoIndice.CRM,
+        CRM: id,
         nome,
         especialidade,
     }

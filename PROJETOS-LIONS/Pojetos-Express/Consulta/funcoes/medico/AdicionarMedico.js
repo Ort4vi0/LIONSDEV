@@ -1,15 +1,15 @@
 const { LerMedicos, SalvarMedicos } = require("../../utils/utils.js")
 
 function AdicionarMedico(req, res){
-    const {nome, especialidade} = req.body
-    if(!nome || !especialidade){
+    const {Nome, Especialidade} = req.body
+    if(!Nome || !Especialidade){
         return res.status(400).send("O Nome e a Especilade são obigatórios para o cadastro!!")
     }
 
     const Medico = {
         CRM: Date.now(),
-        nome,
-        especialidade
+        Nome,
+        Especialidade
     }
     const Medicos = LerMedicos()
     Medicos.push(Medico)
