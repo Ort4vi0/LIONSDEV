@@ -1,15 +1,15 @@
 const { LerPacientes, SalvarPacientes } = require("../../utils/utils.js")
 
 function AdicionarPaciente(req,res){
-    const {nome, data} = req.body
-    if(!nome || !data){
+    const {Nome, Data} = req.body
+    if(!Nome || !Data){
         return res.status(400).send("Insira o nome e data de nascimento...")
     }
     
     const Paciente = { 
         ID: Date.now(),
-        nome,
-        data
+        Nome,
+        DataDeNascimento: Data
     }
 
     const Pacientes = LerPacientes()
