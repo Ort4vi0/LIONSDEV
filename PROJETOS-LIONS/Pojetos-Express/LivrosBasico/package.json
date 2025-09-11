@@ -1,0 +1,25 @@
+{
+  "name": "lionsdev",
+  "version": "1.0.0",
+  "description": "> Desenvolvimento de Alguns programas usando JavaScript e [NodeJS](https://nodejs.org/en)                                                                         > Pasta Principal contendo alguns dos projetos [PROJETOS-LIONS/Projetos-NODEJS](https://github.com/Ort4vi0/LIONSDEV/tree/main/PROJETOS-LIONS/Projetos-NODEJS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ort4vi0/LIONSDEV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ort4vi0/LIONSDEV/issues"
+  },
+  "homepage": "https://github.com/Ort4vi0/LIONSDEV#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.10"
+  }
+}

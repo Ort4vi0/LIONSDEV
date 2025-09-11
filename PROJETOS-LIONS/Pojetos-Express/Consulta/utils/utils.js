@@ -63,6 +63,7 @@ function VerificarMedicoePaciente(Medico, Paciente, res){
     }
 }
 
+
 module.exports = {
     SalvarDados,
     LerDados,
@@ -73,4 +74,4 @@ module.exports = {
     LerMedicos,
     LerPacientes,
     VerificarMedicoePaciente
-};
+}
