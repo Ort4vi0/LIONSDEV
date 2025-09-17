@@ -1,0 +1,16 @@
+[
+  {
+    "ID": 1758111596006,
+    "Nome": "Feijao Preto",
+    "Categoria": "Alimento",
+    "Preco": 55.01,
+    "Estoque": 54
+  },
+  {
+    "ID": 1758111612110,
+    "Nome": "Feijao",
+    "Categoria": "Alimento",
+    "Preco": 25.01,
+    "Estoque": 52
+  }
+]
