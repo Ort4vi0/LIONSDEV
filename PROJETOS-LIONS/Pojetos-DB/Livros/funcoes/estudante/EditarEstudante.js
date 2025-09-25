@@ -1,28 +1,28 @@
-const { LerEstudante, RetornoErro, SalvarEstudante, Retorno } = require("../../utils/utils.js")
+const Estudante = require("../../Esquemas/SchemaEstudante.js")
+const {RetornoErro, Retorno } = require("../../utils/utils.js")
 
-function EditarEstudante(req, res){
-    const {Nome, Matricula, Curso, Ano} = req.body
-    if(!Nome || !Matricula || !Curso || !Ano){
-        RetornoErro("Os campos Nome, Matricula, Curso, Ano são necessarios", res)
-    }
-    const id = Number(req.params.id)
-    const Estudantes = LerEstudante()
-    const IndexEstudante = Estudantes.findIndex(estudante => estudante.ID === id)
-    if(IndexEstudante === -1){
-        RetornoErro("Estudante " + id + " Não foi encontrado!!", res)
-    }
+async function EditarEstudante(req, res){
+    try {
+        const id = req.params.id
+        const Dados = req.body
 
-    const NovoEstudante = {
-        ID: id,
-        Nome: Nome,
-        Matricula: Matricula,
-        Curso: Curso,
-        Ano: Ano
-    }
+        const EstudanteNovo = Estudante.findByIdAndUpdate(
+            id,
+            Dados,
+            {
+                new: true,
+                runValidators: true
 
-    Estudantes[IndexEstudante] = NovoEstudante
-    SalvarEstudante(Estudantes)
-    Retorno("Estudante Editado", res)
+            }
+        )
+        if(!EstudanteNovo){
+            return RetornoErro("Não foi possivel localziar o livro", res, 400)
+        } 
+        Retorno("Livro atualizado com sucesso", 201)
+    } catch (error){
+        console.error("Não foi possivel atualizar o Estudante.", error)
+        return RetornoErro(`Não foi possivel atualizar o Estudante ${error.message}`, res, 400)
+    }
 }
 
 module.exports = {EditarEstudante}

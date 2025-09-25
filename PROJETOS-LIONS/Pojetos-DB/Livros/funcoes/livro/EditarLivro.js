@@ -1,28 +1,29 @@
-const { RetornoErro, LerLivro, SalvarLivro, Retorno } = require("../../utils/utils.js")
+const Livro = require("../../Esquemas/SchemaLivro.js")
+const { RetornoErro, Retorno } = require("../../utils/utils.js")
 
-function EditarLivro(req, res){
-    const id = Number(req.params.id)
-    const {Titulo, Autor, Ano, Genero} = req.body
-    if(!Titulo || !Autor || !Ano || !Genero){
-        RetornoErro("Os campos Titulo, Autor, Ano, Genero são obrigatorios", res)
-    }
-    const Livros = LerLivro()
-    const LivrosIndex = Livros.findIndex(livro => livro.ID === id)
-    if(LivrosIndex === -1){
-        RetornoErro("Não há nenhum livro com o ID " + id + " Cadastrado!!!", res)
-    }
+async function EditarLivro(req, res){
+    try {
+        const id = req.params.id
+        const NovosDados = req.body
 
-    const NovoLivro = {
-        ID: id,
-        Titulo: Titulo,
-        Autor: Autor,
-        Ano: Ano,
-        Genero: Genero
-    }
+        const LivroAtualizado = await Livro.findByIdAndUpdate(
+            id,
+            NovosDados,
+            {
+                new: true,
+                runValidators: true
+            }
+        )
 
-    Livros[LivrosIndex] = NovoLivro
-    SalvarLivro(Livros)
-    Retorno("Livro editado!!", res)
+        if(!LivroAtualizado){
+            return RetornoErro("Livro nao encontrado", res, 400)
+        }
+        Retorno("Livro Atualziado com sucesso", res, 201)
+
+    } catch (error) {
+        console.error("Não foi possivel atualizar o livro.", error)
+        return RetornoErro(`Não foi possivel atualizar o livro ${error.message}`, res, 400)
+    }
 }
 
 module.exports = {EditarLivro}

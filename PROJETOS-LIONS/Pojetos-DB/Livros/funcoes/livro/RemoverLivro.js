@@ -1,17 +1,20 @@
-const { LerLivro, SalvarLivro, RetornoErro, Retorno } = require("../../utils/utils.js")
+const Livro = require("../../Esquemas/SchemaLivro.js")
+const { RetornoErro, Retorno } = require("../../utils/utils.js")
 
-function RemoverLivro(req,res){
-    const id = Number(req.params.id)
-    const Livros = LerLivro()
-    const IndexLivro = Livros.findIndex(livro => livro.ID === id)
-    
-    if(IndexLivro === -1){
-        RetornoErro("Livro não encontrado no sistema!!", res)
+async function RemoverLivro(req,res){
+    try{
+        const id = req.params.id
+        const Livros = Livro.find()
+
+        const LivroDeletado = await Livros.findByIdAndDelete(id)
+        if(!LivroDeletado){
+            return RetornoErro("Livro nao encontrado", res, 400)
+        }
+        Retorno("Livro Removido!!!", res, 200, LivroDeletado)
+    } catch (error){
+        console.error("Livro nao removido!!")
+        RetornoErro(`Não foi possivel Remover o livro!! ${error.message}`, res, 400)
     }
-
-    Livros.splice(IndexLivro, 1)
-    SalvarLivro(Livros)
-    Retorno("Livro Removido!!!", res)
 }
 
 module.exports = {RemoverLivro}
