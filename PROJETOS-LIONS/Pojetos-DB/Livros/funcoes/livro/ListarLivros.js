@@ -1,10 +1,13 @@
-const { RetornoErro, Retorno } = require("../../utils/utils.js");
+const { RetornoErro, RetornoArray } = require("../../utils/utils.js");
 const Livro = require("../../Esquemas/SchemaLivro.js");
 
 async function ListarLivros(req, res){
     try {
         const Livros = await Livro.find();
-        res.status(200).json(Livros)
+        if(Livros != ''){
+            RetornoArray(Livros, res, 201)
+          }
+          RetornoErro("Não há Livros cadastrados", res, 400)
     } catch (error) {
         console.error("Não foi possivel listar os livros")
         console.error(`${error.message}`)

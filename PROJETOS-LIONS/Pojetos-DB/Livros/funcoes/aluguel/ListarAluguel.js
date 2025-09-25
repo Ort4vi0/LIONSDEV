@@ -1,54 +1,18 @@
-const { LerAluguel, RetornoErro, Retorno } = require("../../utils/utils.js");
+const Aluguel = require("../../Esquemas/SchemaAluguel.js");
+const {RetornoErro, RetornoArray } = require("../../utils/utils.js");
 
-function ListarAlguel(req, res){
-    const Alugueis = LerAluguel();
-
-    if (Alugueis.length === 0){
-        return RetornoErro("Não há aluguéis para serem listados", res);
-    }
-    
-    const { Livro, Estudante, DataAluguel, DataDevolucao } = req.query;
-
-    let alugueisFiltrados = [...Alugueis];
-
-    if (Livro) {
-        const idLivro = parseInt(Livro);
-        if (isNaN(idLivro)) {
-            return RetornoErro("O ID do livro deve ser um número válido.", res);
+async function ListarAlguel(req, res){
+    try {
+        const Alugueis = await Aluguel.find();
+        if(Alugueis != ''){
+          return RetornoArray(Alugueis, res, 201)
         }
-        alugueisFiltrados = alugueisFiltrados.filter(aluguel => aluguel.Livro === idLivro);
-    }
-
-    if (Estudante) {
-        const idEstudante = parseInt(Estudante);
-        if (isNaN(idEstudante)) {
-            return RetornoErro("O ID do estudante deve ser um número válido.", res);
-        }
-        alugueisFiltrados = alugueisFiltrados.filter(aluguel => aluguel.Estudante === idEstudante);
-    }
-
-    if (DataAluguel) {
-        alugueisFiltrados = alugueisFiltrados.filter(aluguel => 
-            aluguel.DataAluguel.startsWith(DataAluguel)
-        );
-    }
-
-    if (DataDevolucao) {
-        alugueisFiltrados = alugueisFiltrados.filter(aluguel => 
-            aluguel.DataDevolucao.startsWith(DataDevolucao)
-        );
-    }
-
-    if (alugueisFiltrados.length === 0) {
-        return RetornoErro("Nenhum aluguel encontrado com os filtros especificados.", res);
-    }
-
-    const Lista = {
-        LivrosEncontrados: alugueisFiltrados.length,
-        Alugueis: alugueisFiltrados
-    };
-    
-    return Retorno(Lista, res);
+        RetornoErro("Não há Aluguels cadastrados", res, 400)
+      } catch (error) {
+            console.error("Não foi possivel listar os Alugueis", error)
+            console.error(`${error.message}`)
+            RetornoErro("Ocorreu um erro interno" + `${error.message}`, res, 400)
+      }
 }
 
 module.exports = {ListarAlguel};

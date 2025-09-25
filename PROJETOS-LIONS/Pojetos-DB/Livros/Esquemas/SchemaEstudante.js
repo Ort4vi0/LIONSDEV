@@ -9,7 +9,15 @@ const SchemaEstudante = new mongoose.Schema({
       type: String,
       required: true,
       unique: true
-    }
+    },
+    Curso: {
+      type: String,
+      required: true
+    },
+    Ano: {
+      type: Number,
+      required: true
+    },
 }, { timestamps: true });
 
 const Estudante = mongoose.model("estudantes", SchemaEstudante);
