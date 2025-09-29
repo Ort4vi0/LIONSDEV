@@ -11,7 +11,7 @@ async function ListarLivros(req, res) {
   } catch (error) {
     console.error("Não foi possivel listar os livros");
     console.error(`${error.message}`);
-    RetornoErro("Ocorreu um erro interno", 400);
+    RetornoErro("Ocorreu um erro interno", res);
   }
 }
 

@@ -10,8 +10,6 @@ async function EditarAluguel(req, res) {
       new: true,
       runValidators: true,
     });
-    console.clear();
-    console.log("efefefe" + AluguelNovo);
     if (!AluguelNovo) {
       return RetornoErro(
         "Não foi possivel localizar o aluguel no sistema",

@@ -6,7 +6,6 @@ async function RemoverAluguel(req, res) {
     const id = req.params.id;
     const Alugueis = Aluguel.find();
     const DeletarAluguel = await Alugueis.findByIdAndDelete(id);
-    console.log(DeletarAluguel);
     if (!DeletarAluguel) {
       return RetornoErro("Aluguel de ID" + id + "não encontrado!!", res);
     }
