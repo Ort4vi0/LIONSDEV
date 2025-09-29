@@ -1,3 +1,0 @@
-function SalvarDados(PATH, dados){
-    
-}
