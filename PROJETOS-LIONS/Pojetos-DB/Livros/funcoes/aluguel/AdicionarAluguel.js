@@ -2,13 +2,15 @@ const Livro = require("../../Esquemas/SchemaLivro.js");
 const Aluguel = require("../../Esquemas/SchemaAluguel.js");
 const Estudante = require("../../Esquemas/SchemaEstudante.js");
 
-const { RetornoErro, Retorno } = require("../../utils/utils.js")
-
+const { RetornoErro, Retorno } = require("../../utils/utils.js");
 
 async function AdicionarAluguel(req, res) {
   const { LivroID, EstudanteID, DiasParaDevolver } = req.body;
   if (!LivroID || !EstudanteID || DiasParaDevolver === undefined) {
-    return RetornoErro("Necessario conter LivroID, EstudanteID, DiasParaDevolver", res);
+    return RetornoErro(
+      "Necessario conter LivroID, EstudanteID, DiasParaDevolver",
+      res
+    );
   }
 
   try {

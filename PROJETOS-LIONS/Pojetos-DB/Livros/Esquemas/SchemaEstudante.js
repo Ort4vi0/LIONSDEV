@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const SchemaEstudante = new mongoose.Schema({
+const SchemaEstudante = new mongoose.Schema(
+  {
     Nome: {
       type: String,
       required: true,
@@ -8,17 +9,19 @@ const SchemaEstudante = new mongoose.Schema({
     Matricula: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     Curso: {
       type: String,
-      required: true
+      required: true,
     },
     Ano: {
       type: Number,
-      required: true
+      required: true,
     },
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
 const Estudante = mongoose.model("estudantes", SchemaEstudante);
 

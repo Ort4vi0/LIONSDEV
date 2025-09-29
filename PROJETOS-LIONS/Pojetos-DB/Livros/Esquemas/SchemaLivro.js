@@ -18,7 +18,7 @@ const SchemaLivro = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true}
+  { timestamps: true }
 );
 
 const Livro = mongoose.model("livros", SchemaLivro);
