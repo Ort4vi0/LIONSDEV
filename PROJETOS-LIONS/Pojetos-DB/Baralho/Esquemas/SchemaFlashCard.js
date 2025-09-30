@@ -3,6 +3,7 @@ const SchemaFlashCard = new mongoose.Schema(
   {
     IDBaralho: {
       type: String,
+      ref: "Baralho",
       required: true,
     },
     Pergunta: {

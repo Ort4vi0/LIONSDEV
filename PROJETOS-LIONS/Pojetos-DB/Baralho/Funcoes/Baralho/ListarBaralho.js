@@ -6,8 +6,9 @@ async function ListarBaralho(req,res){
         const Baralhos = await Baralho.find()
         if(Baralhos != ''){
             RetornoArray(Baralhos, res, 201)
+        }else{
+            RetornoErro("Não há Baralhos cadastrados para listar", res)
         }
-        RetornoErro("Não há Baralhos cadastrados para listar", res)
     } catch(err){
         console.error("Não foi possivel listar os Baralhos")
         console.error(`${err.message}`)

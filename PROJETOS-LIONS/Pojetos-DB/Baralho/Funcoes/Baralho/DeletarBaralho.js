@@ -1,19 +1,38 @@
-const Baralho = require("../../Esquemas/SchemaBaralho")
-const { Retorno, RetornoErro } = require("../../Utils/Retorno")
+const Baralho = require("../../Esquemas/SchemaBaralho.js")
+const FlashCard = require("../../Esquemas/SchemaFlashCard.js")
+const { RetornoErro, Retorno } = require("../../Utils/Retorno.js")
 
-async function DeletarBaralho(req,res){
+async function DeletarBaralho(req, res) {
+    const { id } = req.params
+    
+    if (!id) {
+        return RetornoErro("Necessário fornecer o ID do baralho", res, 400)
+    }
+
     try {
-        const id = req.params.id
-        const Baralhos = Baralho.find()
-        const DeletarBaralhoID = await Baralhos.findByIdAndDelete(id)
-        if(!DeletarBaralhoID){
-            return RetornoErro("Alguel de ID" + id + "não foi encontrado", res)
+        const baralhoExistente = await Baralho.findById(id)
+        if (!baralhoExistente) {
+            return RetornoErro("Baralho não encontrado", res, 404)
         }
-        Retorno("Baralho Deletado!!", res, 200, DeletarBaralhoID)
-    } catch (err){
-        RetornoErro("Não foi possivel deletar o ?Baralho devido a um erro interno", res)
-        console.error("não foi possivel deletar devido a um erro interno", err);
+
+        const flashcardsRemovidos = await FlashCard.deleteMany({ IDBaralho: id })
+        
+        await Baralho.findByIdAndDelete(id)
+
+        Retorno(
+            `Baralho "${baralhoExistente.Nome}" deletado com sucesso junto com ${flashcardsRemovidos.deletedCount} flashcard(s) associado(s)`, 
+            res, 
+            200,
+            { 
+                baralhoRemovido: baralhoExistente,
+                flashcardsRemovidos: flashcardsRemovidos.deletedCount
+            }
+        )
+        
+    } catch (err) {
+        console.error("Erro ao deletar o baralho:", err)
+        RetornoErro(`Erro ao deletar o baralho: ${err.message}`, res, 500)
     }
 }
 
-module.exports = {DeletarBaralho}
+module.exports = { DeletarBaralho }

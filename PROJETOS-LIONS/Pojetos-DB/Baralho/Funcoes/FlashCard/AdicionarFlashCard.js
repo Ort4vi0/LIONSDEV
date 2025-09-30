@@ -23,7 +23,7 @@ async function AdicionarFlashCard(req, res) {
         `Um FlashCard com a pergunta "${Pergunta}" já existe.`,
         res,
         409
-      ); // 409 é o código para "Conflito"
+      );
     }
 
     const FlashCardNova = new FlashCard({
