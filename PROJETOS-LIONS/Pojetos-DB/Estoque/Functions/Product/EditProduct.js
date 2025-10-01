@@ -1,4 +1,4 @@
-const Produto = require("../../Esquemas/SchemaProduto");
+const Produto = require("../../Schemas/SchemaProduct");
 const { RetornoErro, Retorno } = require("../../utils/utils");
 
 async function EditarProduto(req, res) {
@@ -12,14 +12,14 @@ async function EditarProduto(req, res) {
     });
 
     if (!ProdutoEditado) {
-      RetornoErro("Não foi possivel editar esse produto",res);
+      RetornoErro("Não foi possivel editar esse produto", res);
     }
 
-    Retorno("Produto Editado com sucesso",res,200,ProdutoEditado)
+    Retorno("Produto Editado com sucesso", res, 200, ProdutoEditado);
   } catch (error) {
-    console.error("Erro interno", error)
-    RetornoErro("Erro interno no servidor",res)
+    console.error("Erro interno", error);
+    RetornoErro("Erro interno no servidor", res);
   }
 }
 
-module.exports = {EditarProduto}
+module.exports = { EditarProduto };

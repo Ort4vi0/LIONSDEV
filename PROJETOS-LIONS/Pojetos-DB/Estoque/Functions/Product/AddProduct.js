@@ -1,4 +1,4 @@
-const Produto = require("../../Esquemas/SchemaProduto");
+const Produto = require("../../Schemas/SchemaProduct");
 const { Retorno, RetornoErro, RetornoArray } = require("../../utils/utils");
 
 async function AdicionarProduto(req, res) {
@@ -21,12 +21,12 @@ async function AdicionarProduto(req, res) {
       });
     }
 
-    if(error.cause && error.cause.code === 11000){
+    if (error.cause && error.cause.code === 11000) {
       const campoDuplicado = Object.keys(error.cause.keyValue)[0];
       const valorDuplicado = Object.values(error.cause.keyValue)[0];
       const mensagem = `O ${campoDuplicado} '${valorDuplicado}' já está cadastrado.`;
-      
-      return RetornoArray({erro: mensagem}, res, 400)
+
+      return RetornoArray({ erro: mensagem }, res, 400);
     }
 
     console.error("Erro interno", error);
