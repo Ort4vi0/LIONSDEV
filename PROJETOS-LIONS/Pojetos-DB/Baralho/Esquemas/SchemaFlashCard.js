@@ -5,6 +5,7 @@ const SchemaFlashCard = new mongoose.Schema(
       type: String,
       ref: "Baralho",
       required: true,
+      immutable: true
     },
     Pergunta: {
       type: String,

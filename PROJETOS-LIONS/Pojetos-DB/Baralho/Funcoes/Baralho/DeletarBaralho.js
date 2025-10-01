@@ -15,17 +15,17 @@ async function DeletarBaralho(req, res) {
             return RetornoErro("Baralho não encontrado", res, 404)
         }
 
-        const flashcardsRemovidos = await FlashCard.deleteMany({ IDBaralho: id })
+        const DeleteFlashCard = await FlashCard.deleteMany({ IDBaralho: id })
         
         await Baralho.findByIdAndDelete(id)
 
         Retorno(
-            `Baralho "${baralhoExistente.Nome}" deletado com sucesso junto com ${flashcardsRemovidos.deletedCount} flashcard(s) associado(s)`, 
+            `Baralho "${baralhoExistente.Nome}" deletado com sucesso junto com ${DeleteFlashCard.deletedCount} flashcard(s) associado(s)`, 
             res, 
             200,
             { 
                 baralhoRemovido: baralhoExistente,
-                flashcardsRemovidos: flashcardsRemovidos.deletedCount
+                DeleteFlashCard: DeleteFlashCard.deletedCount
             }
         )
         

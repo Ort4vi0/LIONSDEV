@@ -8,6 +8,7 @@ const { DeletarBaralho } = require('../Funcoes/Baralho/DeletarBaralho.js')
 const { AdicionarFlashCard } = require('../Funcoes/FlashCard/AdicionarFlashCard.js')
 const { ListarFlashCards } = require('../Funcoes/FlashCard/ListarFlahsCard.js')
 const { DeletarFlashCard } = require('../Funcoes/FlashCard/DeletarFlashCard.js')
+const { EditarFlahCard } = require('../Funcoes/FlashCard/EditarFlashCard.js')
 
 
 const rotas = express.Router()
@@ -20,5 +21,6 @@ rotas.delete('/Baralho/:id', DeletarBaralho )
 rotas.post('/FlashCard', AdicionarFlashCard)
 rotas.get('/FlashCard', ListarFlashCards)
 rotas.delete('/FlashCard/:id', DeletarFlashCard)
+rotas.put("/FlashCard/:id", EditarFlahCard)
 
 module.exports = rotas
