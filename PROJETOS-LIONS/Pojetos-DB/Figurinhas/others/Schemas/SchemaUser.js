@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Users = new mongoose.Schema({
   Nome:{
-    type: Number,
+    type: String,
     required: true
   },
-  QuantidadeFigurinhas:{
+  QNTF:{
     type: Number,
     required: true
   }
