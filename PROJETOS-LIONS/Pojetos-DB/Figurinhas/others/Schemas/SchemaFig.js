@@ -1,0 +1,23 @@
+const mongoose = require("mongoose");
+const Figures = new mongoose.Schema({
+  Numero:{
+    type: Number,
+    required: true
+  },
+  Tema:{
+    type: String,
+    required: true,
+    unique: true
+  },
+  Quantidade:{
+    type: Number,
+    required: true
+  },
+  Usuario:{
+    required: true,
+    type: String
+  }
+});
+
+const FiguresMGS = mongoose.model("Figurinhas", Figures);
+module.exports = FiguresMGS;
