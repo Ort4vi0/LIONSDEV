@@ -1,5 +1,8 @@
-const FiguresMGS = require("../../others/Schemas/SchemaFig");
-const { RetornarErro, RetornarSucesso } = require("../../others/utils/utils");
+const FiguresMGS = require("../../others/Schemas/SchemaFig.js");
+const {
+  RetornarErro,
+  RetornarSucesso,
+} = require("../../others/utils/utils.js");
 
 async function EditFigure(req, res) {
   const id = req.params.id;

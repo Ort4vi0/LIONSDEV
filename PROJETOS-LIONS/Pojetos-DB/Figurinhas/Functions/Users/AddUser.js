@@ -1,13 +1,26 @@
-const UsersMGS = require("../../others/Schemas/SchemaUser")
-const { RetornarSucesso } = require("../../others/utils/utils")
+const UsersMGS = require("../../others/Schemas/SchemaUser.js");
+const {
+  RetornarSucesso,
+  RetornarErro,
+} = require("../../others/utils/utils.js");
 
-async function AddUser(req,res){
-    const Dados = req.body
-    if(Dados.QNTF == null){
-        Dados.QNTF = 0
-    }
-    const NewUser = await UsersMGS.create(Dados)
-    RetornarSucesso(res, `Usuário ${Dados.Nome} Adicionado com sucesso`,200, NewUser)
+async function AddUser(req, res) {
+  try {
+    const Dados = req.body;
+    const NewUser = await UsersMGS.create(Dados);
+    RetornarSucesso(
+      res,
+      `Usuário ${Dados.Nome} Adicionado com sucesso`,
+      200,
+      NewUser
+    );
+  } catch (error) {
+    console.log(error);
+    return RetornarErro(
+      res,
+      "Não foi possivel criar um usuario devido a um erro interno do servidor"
+    );
+  }
 }
 
-module.exports = {AddUser}
+module.exports = { AddUser };

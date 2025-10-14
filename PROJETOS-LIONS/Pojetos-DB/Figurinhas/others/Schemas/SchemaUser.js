@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 const Users = new mongoose.Schema({
-  Nome:{
+  Nome: {
     type: String,
-    required: true
+    required: true,
   },
-  QNTF:{
+  QNTF: {
     type: Number,
-    required: true
-  }
+    required: true,
+    default: 0,
+  },
 });
 
 const UsersMGS = mongoose.model("Usuarios", Users);

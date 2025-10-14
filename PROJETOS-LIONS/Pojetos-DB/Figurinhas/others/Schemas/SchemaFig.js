@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 const Figures = new mongoose.Schema({
-  Numero:{
+  Numero: {
     type: Number,
-    required: true
+    required: true,
   },
-  Tema:{
+  Tema: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
-  Quantidade:{
+  Quantidade: {
     type: Number,
-    required: true
-  },
-  Usuario:{
     required: true,
-    type: String
-  }
+  },
+  Usuario: {
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Usuario",
+  },
 });
 
 const FiguresMGS = mongoose.model("Figurinhas", Figures);
