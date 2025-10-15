@@ -7,7 +7,6 @@ const Figures = new mongoose.Schema({
   Tema: {
     type: String,
     required: true,
-    unique: true,
   },
   Quantidade: {
     type: Number,
