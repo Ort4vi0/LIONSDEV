@@ -8,7 +8,7 @@ async function RemoverLivro(req, res) {
 
     const LivroDeletado = await Livros.findByIdAndDelete(id);
     if (!LivroDeletado) {
-      return RetornoErro("Livro nao encontrado", res, 400);
+      return RetornoErro("Livro nao encontrado", res, 500);
     }
     Retorno("Livro Removido!!!", res, 200, LivroDeletado);
   } catch (error) {

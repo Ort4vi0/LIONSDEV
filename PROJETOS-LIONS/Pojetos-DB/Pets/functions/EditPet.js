@@ -12,7 +12,7 @@ async function EditPet(req, res) {
       runValidators: true,
     });
     if (!NewPet) {
-      return RetornoErro("Não foi possivel localziar o livro", res, 400);
+      return RetornoErro("Não foi possivel localziar o livro", res, 500);
     }
     Retorno("O PET foi editado com sucesso!!", res, 200, NewPet);
   } catch (err) {

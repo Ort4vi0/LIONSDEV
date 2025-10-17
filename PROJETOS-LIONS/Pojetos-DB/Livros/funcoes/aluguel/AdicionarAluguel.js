@@ -16,11 +16,11 @@ async function AdicionarAluguel(req, res) {
   try {
     const FindLivro = await Livro.findById(LivroID);
     if (!FindLivro) {
-      return RetornoErro("Livro nao encontrado no sistema", res, 400);
+      return RetornoErro("Livro nao encontrado no sistema", res, 500);
     }
     const FindEstudante = await Estudante.findById(EstudanteID);
     if (!FindEstudante) {
-      return RetornoErro("Estudante não cadastrado no sistema", res, 404);
+      return RetornoErro("Estudante não cadastrado no sistema", res, 500);
     }
     const DataAtual = new Date();
     const DataDevolucao = new Date(DataAtual);

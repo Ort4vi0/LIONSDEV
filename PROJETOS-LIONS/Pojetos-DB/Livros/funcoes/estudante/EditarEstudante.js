@@ -11,7 +11,7 @@ async function EditarEstudante(req, res) {
       runValidators: true,
     });
     if (!EstudanteNovo) {
-      return RetornoErro("Não foi possivel localziar o livro", res, 400);
+      return RetornoErro("Não foi possivel localziar o livro", res, 500);
     }
     Retorno("Livro atualizado com sucesso", 201);
   } catch (error) {

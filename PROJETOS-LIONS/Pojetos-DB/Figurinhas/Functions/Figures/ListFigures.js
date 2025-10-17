@@ -16,7 +16,7 @@ async function ListFigures(req, res) {
     }
     RetornarSucesso(res, Figures, 200);
   } catch (error) {
-    return RetornarErro(res, "Erro interno no servidor", 400);
+    return RetornarErro(res, "Erro interno no servidor", 500);
   }
 }
 

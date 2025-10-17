@@ -14,7 +14,7 @@ async function AdicionarFlashCard(req, res) {
 
     const FindBaralho = await Baralho.findById(IDBaralho);
     if (!FindBaralho || FindBaralho == ' ') {
-      return RetornoErro("Baralho nao encontrado no sistema", res, 400);
+      return RetornoErro("Baralho nao encontrado no sistema", res, 500);
     }
 
     const FlashCardExistente = await FlashCard.findOne({ Pergunta: Pergunta });

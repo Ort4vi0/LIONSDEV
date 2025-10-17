@@ -6,13 +6,13 @@ async function DeletarBaralho(req, res) {
     const { id } = req.params
     
     if (!id) {
-        return RetornoErro("Necessário fornecer o ID do baralho", res, 400)
+        return RetornoErro("Necessário fornecer o ID do baralho", res, 500)
     }
 
     try {
         const baralhoExistente = await Baralho.findById(id)
         if (!baralhoExistente) {
-            return RetornoErro("Baralho não encontrado", res, 404)
+            return RetornoErro("Baralho não encontrado", res, 500)
         }
 
         const DeleteFlashCard = await FlashCard.deleteMany({ IDBaralho: id })

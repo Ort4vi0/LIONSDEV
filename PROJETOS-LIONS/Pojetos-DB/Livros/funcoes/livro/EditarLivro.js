@@ -12,7 +12,7 @@ async function EditarLivro(req, res) {
     });
 
     if (!LivroAtualizado) {
-      return RetornoErro("Livro nao encontrado", res, 400);
+      return RetornoErro("Livro nao encontrado", res, 500);
     }
     Retorno("Livro Atualziado com sucesso", res, 201);
   } catch (error) {

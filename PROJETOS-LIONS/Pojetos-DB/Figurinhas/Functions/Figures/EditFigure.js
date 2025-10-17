@@ -12,7 +12,7 @@ async function EditFigure(req, res) {
     runValidators: true,
   });
   if (!EditFigure) {
-    return RetornarErro(res, "Não foi possivel editar a figura", 400);
+    return RetornarErro(res, "Não foi possivel editar a figura", 500);
   }
   RetornarSucesso(res, "Figura editada com sucesso", 200);
 }

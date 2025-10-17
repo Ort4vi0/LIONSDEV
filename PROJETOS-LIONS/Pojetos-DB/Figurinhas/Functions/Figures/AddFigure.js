@@ -34,7 +34,7 @@ async function AddFigure(req, res) {
   } catch (error) {
     console.log(error);
     if (error.code === 11000) {
-      return RetornarErro(res, "Já existe essa figurinha cadastrada", 400,);
+      return RetornarErro(res, "Já existe essa figurinha cadastrada", 500,);
     }
     return RetornarErro(res, "Ocorreu um erro inesperado no servidor.", 500);
   }

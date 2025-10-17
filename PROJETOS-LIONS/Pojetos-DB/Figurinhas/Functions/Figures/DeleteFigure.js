@@ -18,7 +18,7 @@ async function DeleteFigure(req, res) {
       DeleteFigure
     );
   } catch (error) {
-    return RetornarErro(res, "Não foi possivel deletar uma figura", 404);
+    return RetornarErro(res, "Não foi possivel deletar uma figura", 500);
   }
 }
 

@@ -26,7 +26,7 @@ async function AdicionarProduto(req, res) {
       const valorDuplicado = Object.values(error.cause.keyValue)[0];
       const mensagem = `O ${campoDuplicado} '${valorDuplicado}' já está cadastrado.`;
 
-      return RetornoArray({ erro: mensagem }, res, 400);
+      return RetornoArray({ erro: mensagem }, res, 500);
     }
 
     console.error("Erro interno", error);
