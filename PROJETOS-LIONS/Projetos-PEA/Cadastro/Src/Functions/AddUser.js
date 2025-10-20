@@ -2,16 +2,16 @@ const bcrypt = require('bcrypt')
 const RegisterUserMGS = require('../Schemas/SchemaRegister')
 const { RetornarSucesso, RetornarErro } = require('../Utils/utils')
 
+
 async function AddUser(req,res) {
     try{
     const Dados = req.body
     const HashSenha = await bcrypt.hash(Dados.Senha, 12)
-    const NewUser = await RegisterUserMGS.create({
+    
+    await RegisterUserMGS.create({
         ...Dados,
         Senha: HashSenha
     })
-
-    NewUser.Senha = undefined
 
     return RetornarSucesso(res, "Ususario Criado com sucesso!!")
     } catch(error){
