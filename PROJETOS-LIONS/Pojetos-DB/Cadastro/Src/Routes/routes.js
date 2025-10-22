@@ -1,15 +1,15 @@
-const express = require("express");
-const { AddUser } = require("../Functions/User/AddUser");
-const { RemoveUser } = require("../Functions/User/RemoveUser");
-const { loginUser } = require("../Functions/Login/LoginUser");
-const { AuthMiddleware } = require("../Middleware/auth-middleware");
-const { HelloUser } = require("../Functions/Login/GetUser");
+import express from "express";
+import { AddUser } from "../Functions/User/AddUser.js";
+import { RemoveUser } from "../Functions/User/RemoveUser.js";
+import { loginUser } from "../Functions/Login/LoginUser.js";
+import { AuthMiddleware } from "../Middleware/auth-middleware.js";
+import { HelloUser } from "../Functions/Login/GetUser.js";
 
 const route = express.Router();
 
-route.post("/Cadastro", AddUser)
-route.delete("/Cadastro/:id", RemoveUser)
-route.post("/login", loginUser)
-route.get("/profile", AuthMiddleware, HelloUser)
+route.post("/Cadastro", AddUser);
+route.delete("/Cadastro/:id", RemoveUser);
+route.post("/login", loginUser);
+route.get("/profile", AuthMiddleware, HelloUser);
 
-module.exports = route;
+export default route;

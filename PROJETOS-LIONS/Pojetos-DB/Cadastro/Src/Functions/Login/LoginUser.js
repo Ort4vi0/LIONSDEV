@@ -1,7 +1,6 @@
-const RegisterUserMGS = require('../../Schemas/SchemaRegister')
-
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+import RegisterUserMGS from '../../Schemas/SchemaRegister.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 async function loginUser(req, res){
   const { Email, Senha } = req.body;
@@ -17,4 +16,4 @@ async function loginUser(req, res){
   res.json({ message: 'Login realizado com sucesso!', token });
 }
 
-module.exports = {loginUser}
+export { loginUser };
