@@ -1,7 +1,7 @@
 import { RetornarErro } from '../Utils/utils.js';
 import jwt from 'jsonwebtoken';
 
-const Role = {
+export const Role = {
     USER: 'user',
     ADMIN: 'admin',
     OWNER: 'owner'
@@ -12,7 +12,7 @@ export function AuthMiddleware(...allowedRoles) {
     const authHeader = req.headers.authorization;
     if (!authHeader) return RetornarErro(res, "Token invalido", 401);
     
-    const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : authHeader;
+    const token = authHeader.startsWith('Bearer ') ? authHeader.slice('Bearer '.length) : authHeader;
     
     try {
         const secret = process.env.JWT_SECRET;
