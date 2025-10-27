@@ -11,5 +11,6 @@ route.post("/Cadastro", AddUser);
 route.delete("/Cadastro/:id", RemoveUser);
 route.post("/login", loginUser);
 route.get("/profile", AuthMiddleware, HelloUser);
+route.get("/admin", AuthMiddleware('admin', 'owner'), HelloUser)
 
 export default route;

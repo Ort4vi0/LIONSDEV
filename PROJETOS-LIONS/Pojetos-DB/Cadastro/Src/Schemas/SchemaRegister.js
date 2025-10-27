@@ -14,6 +14,12 @@ const SchemaRegister = new mongoose.Schema({
         type: String,
         required: true
     },
+    Role:{
+        type: [String],
+        enum: ['user', 'admin', 'owner'],
+        default: 'user',
+        required: true
+    }
 });
 
 const RegisterUserMGS = mongoose.model("Register", SchemaRegister);
